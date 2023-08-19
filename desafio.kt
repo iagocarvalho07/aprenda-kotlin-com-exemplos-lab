@@ -11,11 +11,23 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) 
     val inscritos = mutableListOf<Usuario>()
     
     fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
-    }
+        inscritos.add(usuario)    }
 }
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    val conteudo1 = ConteudoEducacional("Introdução à Programação", 120)
+    val conteudo2 = ConteudoEducacional("Estruturas de Dados", 180)
+    val conteudo3 = ConteudoEducacional("Algoritmos de Busca", 90)
+
+    val formacao = Formacao("Ciência da Computação", listOf(conteudo1, conteudo2, conteudo3))
+
+    val usuario1 = Usuario("João")
+    val usuario2 = Usuario("Maria")
+    val usuario3 = Usuario("Pedro")
+
+    formacao.matricular(usuario1)
+    formacao.matricular(usuario2)
+    formacao.matricular(usuario3)
+
+    println("Inscritos na formação: ${formacao.inscritos.joinToString { it.nome }}")
 }
